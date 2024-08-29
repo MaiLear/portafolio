@@ -1,0 +1,47 @@
+:root{
+  color-scheme: light dark;
+
+}
+
+body{
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Onest Variable',system-ui, sans-serif;
+}
+
+.light{
+  --background-color:white;
+  --text-color:black
+}
+.dark{
+  --background-color:dark;
+  --text-color:white
+}
+
+.paragraph{
+  color: rgb(209 213 219);
+}
+
+
+/* Estilos para el tema oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: black;
+      --text-color: white;
+    }
+  }
+  
+  /* Estilos para el tema claro */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --background-color: white;
+      --text-color: black;
+    }
+
+    /*Estilo para cuando se reducen las animaciones*/
+    @media (prefers-reduced-motion: reduce) {
+      html{
+        scroll-behavior: auto;
+      }
+    }
+  }
