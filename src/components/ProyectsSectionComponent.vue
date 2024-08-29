@@ -122,6 +122,15 @@ const PROYECTS = ref([
     tags: [TAGS.javascript, TAGS.laravel ]
   },
   {
+    title: "Post venta",
+    description:
+      "Un pequeño sistema de venta de productos para un supermercado, creado desde cero con Javascript y PHP",
+    link: "",
+    github: "https://github.com/MaiLear/JuniorEcommerce",
+    image: require("@/../public/img/proyect5.webp"),
+    tags: [TAGS.javascript, TAGS.php ]
+  },
+  {
     title: "API",
     description:
       "Una  API de venta de productos creada con la arquitectura de microservicios.",

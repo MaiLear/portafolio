@@ -5,14 +5,47 @@ let DARKiCON = defineAsyncComponent(()=>import('@/components/icons/MoonIcon.vue'
 
 
 
-const colorParagraph = (classValue,changeColor)=>{
+const colorParagraph = (options,theme)=>{
+  let {classParagraph} = options;
     const $ELEMENT = document.querySelectorAll('p');
     $ELEMENT.forEach(el=>{
-        if(changeColor) el.classList.add(classValue);
+        if(theme == 'dark') el.classList.remove(classParagraph);
 
-        else el.classList.remove(classValue);
+        else el.classList.add(classParagraph);
     })
 }
+
+const menuStyle = (options,theme)=>{
+  let {idMenu,classMenuLight,classMenuDark} = options;
+  const $MENU = document.getElementById(idMenu);
+
+  if(theme == 'dark'){
+    $MENU.classList.remove(classMenuDark);
+    $MENU.classList.add(classMenuLight);
+  }
+  else{
+    $MENU.classList.remove(classMenuLight);
+    $MENU.classList.add(classMenuDark);
+  }
+
+}
+
+const bodyStyle = (options,theme)=>{
+  let {classBodyDark,classBodyLight} = options;
+  console.log(options,theme);
+  
+  const $BODY = document.body;
+
+  if(theme == 'dark'){
+    $BODY.classList.remove(classBodyDark);
+    $BODY.classList.add(classBodyLight);
+  }
+  else{
+    $BODY.classList.remove(classBodyLight);
+    $BODY.classList.add(classBodyDark);
+  }
+}
+
 
 const currentTheme = (id,classDarkIcon) =>{
   const $ICON = document.getElementById(id);
@@ -21,8 +54,21 @@ const currentTheme = (id,classDarkIcon) =>{
   : 'light';
 }
 
+const currentThemeSystem = ()=>{
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  ? 'dark'
+  : 'light';
+}
+
+
+export const firstLoadThemeMenu = (options)=>{
+  options.theme = currentThemeSystem();
+  menuStyle(options);
+  
+}
+
 export const firstLoadThemeBtn = ()=>{
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches 
+  return currentThemeSystem() == 'dark'
   ? DARKiCON 
   : LIGHTiCON;
 }
@@ -37,16 +83,14 @@ export const themeBtn = (options)=>{
 }
 
 export const theme = (options) => {
-  let { classBodyLight, classBodyDark,classDarkIcon, idIconComponent,classParagraph } = options;
-  const $BODY = document.body;
+  let { bodyOptions,paragraphOptions,menuOptions,classDarkIcon,idIconComponent, } = options;
+
+  const theme = currentTheme(idIconComponent,classDarkIcon);
   
-  if (currentTheme(idIconComponent,classDarkIcon) != 'dark') {
-    $BODY.classList.remove(classBodyLight);
-    $BODY.classList.add(classBodyDark);
-    colorParagraph(classParagraph,true);
-  } else {
-    $BODY.classList.remove(classBodyDark);
-    $BODY.classList.add(classBodyLight);
-    colorParagraph(classParagraph,false);
-  }
+  
+    bodyStyle(bodyOptions,theme)
+    colorParagraph(paragraphOptions,theme);
+    menuStyle(menuOptions,theme)
+  
+  
 };
