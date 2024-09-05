@@ -14,7 +14,7 @@ body{
   --text-color:black
 }
 .dark{
-  --background-color:dark;
+  --background-color:#000;
   --text-color:white
 }
 

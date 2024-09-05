@@ -36,10 +36,13 @@
 </template>
 
 <script setup>
-import { theme, themeBtn, firstLoadThemeBtn, firstLoadThemeMenu } from "@/composables/theme";
+import { theme, themeBtn, firstLoadThemeBtn, firstLoadThemeMenu, firstLoadParagraphStyle } from "@/composables/theme";
 import { ref, onMounted } from "vue";
 
 const ICONCOMPONENT = ref("");
+
+let idIconComponent = "icon-component";
+let classDarkIcon = "dark-icon";
 
 
 
@@ -62,8 +65,8 @@ const themeOptions = {
   bodyOptions,
   paragraphOptions,
   menuOptions,
-  idIconComponent: "icon-component",
-  classDarkIcon: "dark-icon",
+  idIconComponent,
+  classDarkIcon,
 };
 
 const handleTheme = () => {
@@ -77,6 +80,8 @@ const handleTheme = () => {
 onMounted(() => {
   ICONCOMPONENT.value = firstLoadThemeBtn();
   firstLoadThemeMenu(menuOptions);
+  firstLoadParagraphStyle(paragraphOptions);
+  
 });
 </script>
 
