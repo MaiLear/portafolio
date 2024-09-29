@@ -11,8 +11,16 @@
           >mejorar el tiempo de carga de una consulta en el entorno de
           pruebas.</span
         >
-        Tambien colabore en la modularizacion de un proyecto mejorando su
-        escalabilidad
+        También he desarrollado módulos para la administración de los registros
+        de la base de datos,
+        <span class="text-danger"
+          >desde crear consultas, según un rango de fechas
+        </span>
+        y mostrar la cantidad de datos en unos gráficos, hasta desarrollar un
+        <span class="text-danger"
+          >administrador de archivos online </span> para la administración de archivos
+          de la empresa
+        
       </p>
 
       <p>

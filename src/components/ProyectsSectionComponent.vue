@@ -23,7 +23,7 @@
       <p class="pt-2 paragraph">{{ proyect.description }}</p>
 
       <div class="d-flex gap-2">
-        <div class="d-flex">
+        <div class="d-flex gap-3">
           <a
             class="border rounded px-2 py-1 d-flex gap-1 nav-link align-items-center"
             target="_blank"
@@ -32,16 +32,16 @@
             <v-icon name="bi-github"></v-icon>
             Code
           </a>
-        </div>
-        <!-- <div class="d-flex">
           <a
             class="border rounded px-2 py-1 d-flex gap-1 nav-link align-items-center"
+            target="_blank"
             :href="proyect.link"
+            v-if="proyect.link"
           >
-            <v-icon name="hi-link"></v-icon>
-            Preview
+            <v-icon name="fa-link"></v-icon>
+            Code
           </a>
-        </div> -->
+        </div>
       </div>
     </div>
   </article>
@@ -88,6 +88,13 @@ const TAGS = {
     style:"background-color: rgba(117,122,178,0.5);font-size: 12px; padding-top:2px; padding-buttom:2px;",
     icon: defineAsyncComponent(() =>
       import("@/components/icons/PhpIcon.vue")
+    ),
+    },
+    react: {
+    name: "React",
+    style:"background-color: rgba(0,210,231,0.5);font-size: 12px; padding-top:2px; padding-buttom:2px;",
+    icon: defineAsyncComponent(() =>
+      import("@/components/icons/ReactIcon.vue")
     ),
     },
     
@@ -139,6 +146,16 @@ const PROYECTS = ref([
     github: "https://github.com/MaiLear/learning-microservice",
     image: require("@/../public/img/proyect3.webp"),
     tags: [TAGS.docker, TAGS.php ]
+  },
+  {
+    title: "Rompecabezas",
+    description:
+      "Un pequeño juego de rompecabezas para mejorar la lógica con React.",
+    link: "https://rompecabezas-woad.vercel.app/",
+    class: "border border-1 rounded",
+    github: "https://github.com/MaiLear/rompecabezas",
+    image: require("@/../public/img/proyect6.webp"),
+    tags: [TAGS.react ]
   },
   
 ]);
